@@ -1,0 +1,152 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "rest test"
+  x-java-interface: "com.huaweiair.order.manage.OrderManage"
+basePath: "/huaweiair/v1"
+schemes:
+- "http"
+produces:
+- "application/json"
+paths:
+  /orders:
+    post:
+      operationId: "createOrders"
+      parameters:
+      - in: "body"
+        name: "order"
+        required: true
+        schema:
+          $ref: "#/definitions/FlightFlag"
+      responses:
+        200:
+          description: "create order success"
+          schema:
+            type: "boolean"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+    get:
+      operationId: "getAllOrders"
+      parameters:
+      - in: "query"
+        name: "userId"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "get all orders success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Order"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+  /orders/{orderId}:
+    put:
+      operationId: "modifyOrder"
+      parameters:
+      - name: "orderId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "query"
+        name: "action"  #0 pay,1 refund,3 ready pay
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "modify order success"
+          schema:
+            type: "boolean"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+    delete:
+      operationId: "deleteOrder"
+      parameters:
+      - in: "path"
+        name: "orderId"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "delete order success"
+          schema:
+            type: "boolean"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+      
+definitions:
+  FlightFlag:
+    type: "object"
+    properties:
+      userId:
+        type: "string"
+      fromAirPortName:
+        type: "string"
+      toAirPortName:
+        type: "string"
+      toFlightId:
+        type: "string"
+      toFlightTime:
+        type: "string"
+      toFlightClass:
+        type: "integer" #0 first class,1  second class.
+        format: "int32"
+      toFlightPrice:
+        type: "integer" 
+        format: "int32"
+      retFlightId:
+        type: "string"
+      retFlightClass:  #0 first class,1  second class.
+        type: "integer"
+        format: "int32"
+      retFlightTime:
+        type: "string"
+      retFlightPrice:
+        type: "integer"
+        format: "int32"
+      toFlightSegId:
+        type: "string"
+      retFlightSegId:
+        type: "string"
+      oneWayFlight:
+        type: "boolean"
+      toScheduledDepartureTime:
+        type: "string"
+      toScheduledArrivalTime:
+        type: "string"
+      retScheduledDepartureTime:
+        type: "string"
+      retScheduledArrivalTime:
+        type: "string"
+        
+  Order:
+    type: "object"
+    properties:
+      orderId:
+        type: "string"
+      flightId:
+        type: "string"
+      name:
+        type: "string"
+      flightTime:
+        type: "string"
+      flightClass:
+        type: "integer"
+        format: "int32"
+      flightPrice:
+        type: "integer"
+        format: "int32"     
+      orderTime:
+        type: "string"   
+      orderStatus:
+        type: "integer"
+        format: "int32"
+      scheduledDepartureTime:
+        type: "string"
+      scheduledArrivalTime:
+        type: "string"
+        
+        
