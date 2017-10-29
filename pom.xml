@@ -4,11 +4,11 @@
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.services</groupId>
-    <artifactId>huaweiairorderservice</artifactId>
+    <artifactId>orderservice4training</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>huaweiairorderservice</name>
+    <name>orderservice4training</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -16,7 +16,7 @@
         <cse.version>2.1.4</cse.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <demo.main>com.huaweiair.order.HuaweiAirOrderServer</demo.main>
+        <demo.main>com.services.pojo.SpringPojoServer</demo.main>
     </properties>
 
     <dependencyManagement>
@@ -78,42 +78,10 @@
             <artifactId>joda-time</artifactId>
             <version>2.9.9</version>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>io.swagger</groupId>
-                <artifactId>huawei-swagger-codegen-maven-plugin</artifactId>
-                <version>2.2.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <skipOverwrite>true</skipOverwrite>
-                    <!-- generateAll/generateInterface -->
-                    <generateLeven>generateAll</generateLeven>
-                    <inputSpecs>
-                    	<param>./src/main/resources/microservices/OrderService/order.yaml</param>
-                    </inputSpecs>
-				    <groupId>com.services</groupId>
-				    <artifactId>huaweiairorderservice</artifactId>
-				    <version>1.0.0</version>
-				    <output>./src/main/java</output>
-				    <serviceName>OrderService</serviceName>
-				    <cseVersion>2.1.4</cseVersion>
-				    <!-- CSE-Java(JAX-RS)/CSE-Java(SprintMVC)/CSE-Java(POJO) -->
-				    <language>CSE-Java(POJO)</language>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

@@ -1,0 +1,105 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "rest test"
+  x-java-interface: "com.services.pojo.csedemo.Csedemo"
+basePath: "/controller"
+schemes:
+- "http"
+produces:
+- "application/json"
+paths:
+  /add:
+    get:
+      operationId: "add"
+      parameters:
+      - name: "a"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int32"
+      - name: "b"
+        in: "query"
+        required: true
+        type: "integer"
+        format: "int32"
+      responses:
+        200:
+          description: "add numer"
+          schema:
+            type: "integer"
+            format: "int32"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+  /sayhello/{name}:
+    post:
+      operationId: "sayHello"
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "say hello"
+          schema:
+            type: "string"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+  /saysomething:
+    post:
+      operationId: "saySomething"
+      parameters:
+      - name: "prefix"
+        in: "query"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "user"
+        required: true
+        schema:
+          $ref: "#/definitions/Person"
+      responses:
+        200:
+          description: "say something"
+          schema:
+            type: "string"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+  /sayhi:
+    get:
+      operationId: "sayHi"
+      parameters:
+      - name: "name"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "say hi"
+          schema:
+            type: "string"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+  /sayhei:
+    get:
+      operationId: "sayHei"
+      parameters:
+      - name: "name"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "say hei"
+          schema:
+            type: "string"
+      x-contentType: "application/json"
+      x-accepts: "application/json"
+definitions:
+  Person:
+    type: "object"
+    properties:
+      name:
+        type: "string"
