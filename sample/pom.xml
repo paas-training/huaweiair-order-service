@@ -83,6 +83,34 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>huawei-swagger-codegen-maven-plugin</artifactId>
+                <version>2.2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- goal>generate</goal-->
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skipOverwrite>true</skipOverwrite>
+                    <!-- generateAll/generateInterface -->
+                    <generateLeven>generateInterface</generateLeven>
+                    <inputSpecs>
+                    	<param>./src/main/resources/microservices/OrderService/order.yaml</param>
+                    </inputSpecs>
+				    <groupId>com.services</groupId>
+				    <artifactId>orderservice4training</artifactId>
+				    <version>1.0.0</version>
+				    <output>target/swagger</output>
+				    <serviceName>pojo</serviceName>
+				    <cseVersion>2.1.4</cseVersion>
+				    <!-- CSE-Java (JAX-RS)/CSE-Java (SprintMVC)/CSE-Java (POJO) -->
+				    <language>CSE-Java (POJO)</language>
+                </configuration>
+            </plugin>        
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.10</version>

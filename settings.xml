@@ -158,10 +158,11 @@ under the License.
     </mirror>
      -->
     <mirror>
-      <id>ali</id>
+      <id>mirrorId</id>
       <mirrorOf>central</mirrorOf>
+      <name>Mirror of central repository.</name>
       <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-    </mirror> 
+    </mirror>
  </mirrors>
 
   <!-- profiles
