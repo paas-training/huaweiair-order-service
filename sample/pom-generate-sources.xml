@@ -98,12 +98,13 @@
                     <!-- generateAll/generateInterface -->
                     <generateLeven>generateInterface</generateLeven>
                     <inputSpecs>
-                    	<param>./src/main/resources/microservices/OrderService/OrderService.yaml</param>
+                    	<param>./src/main/resources/microservices/OrderService/order.yaml</param>
                     </inputSpecs>
 				    <groupId>com.huaweiair</groupId>
 				    <artifactId>huaweiairorderservice</artifactId>
 				    <version>1.0.0</version>
 				    <output>target/swagger</output>
+				    <packageName>com.huaweiair.order</packageName>
 				    <serviceName>order</serviceName>
 				    <cseVersion>2.1.4</cseVersion>
 				    <!-- CSE-Java (JAX-RS)/CSE-Java (SprintMVC)/CSE-Java (POJO) -->

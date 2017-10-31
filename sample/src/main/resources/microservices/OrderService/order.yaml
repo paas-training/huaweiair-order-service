@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: "rest test"
-  x-java-interface: "com.huaweiair.order.manage.OrderManage"
+  x-java-interface: "com.huaweiair.order.Order"
 basePath: "/huaweiair/v1"
 schemes:
 - "http"
@@ -39,7 +39,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Order"
+              $ref: "#/definitions/FlightOrder"
       x-contentType: "application/json"
       x-accepts: "application/json"
   /orders/{orderId}:
@@ -122,10 +122,12 @@ definitions:
       retScheduledArrivalTime:
         type: "string"
         
-  Order:
+  FlightOrder:
     type: "object"
     properties:
       orderId:
+        type: "string"
+      userId:
         type: "string"
       flightId:
         type: "string"
