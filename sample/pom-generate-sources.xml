@@ -3,12 +3,12 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.services</groupId>
-    <artifactId>orderservice4training</artifactId>
+    <groupId>com.huaweiair</groupId>
+    <artifactId>huaweiairorderservice</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>orderservice4training</name>
+    <name>huaweiairorderservice</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -16,7 +16,7 @@
         <cse.version>2.1.4</cse.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <demo.main>com.services.pojo.SpringPojoServer</demo.main>
+        <demo.main>com.huaweiair.pojo.SpringPojoServer</demo.main>
     </properties>
 
     <dependencyManagement>
@@ -89,7 +89,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <!-- goal>generate</goal-->
+                            <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -98,18 +98,19 @@
                     <!-- generateAll/generateInterface -->
                     <generateLeven>generateInterface</generateLeven>
                     <inputSpecs>
-                    	<param>./src/main/resources/microservices/OrderService/order.yaml</param>
+                    	<param>./src/main/resources/microservices/OrderService/OrderService.yaml</param>
                     </inputSpecs>
-				    <groupId>com.services</groupId>
-				    <artifactId>orderservice4training</artifactId>
+				    <groupId>com.huaweiair</groupId>
+				    <artifactId>huaweiairorderservice</artifactId>
 				    <version>1.0.0</version>
 				    <output>target/swagger</output>
-				    <serviceName>pojo</serviceName>
+				    <serviceName>order</serviceName>
 				    <cseVersion>2.1.4</cseVersion>
 				    <!-- CSE-Java (JAX-RS)/CSE-Java (SprintMVC)/CSE-Java (POJO) -->
 				    <language>CSE-Java (POJO)</language>
                 </configuration>
             </plugin>        
+       
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
