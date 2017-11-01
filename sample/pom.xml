@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.huaweiair</groupId>
+    <artifactId>huaweiairorderservice</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>huaweiairorderservice</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cse.version>2.1.4</cse.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <demo.main>com.huaweiair.pojo.SpringPojoServer</demo.main>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.huawei.paas.cse</groupId>
+                <artifactId>cse-dependency</artifactId>
+                <version>${cse.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.servicecomb</groupId>
+            <artifactId>provider-pojo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.servicecomb</groupId>
+            <artifactId>handler-bizkeeper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.servicecomb</groupId>
+            <artifactId>handler-loadbalance</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.servicecomb</groupId>
+            <artifactId>transport-rest-vertx</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huawei.paas.cse</groupId>
+            <artifactId>cse-handler-tracing</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huawei.paas.cse</groupId>
+            <artifactId>cse-handler-tcc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.huawei.paas.cse</groupId>
+            <artifactId>cse-handler-performance-stats</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>./lib/</classpathPrefix>
+                            <mainClass>${demo.main}</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+

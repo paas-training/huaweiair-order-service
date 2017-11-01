@@ -11,7 +11,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.huaweiair.order.model.Order;
+import com.huaweiair.order.model.FlightOrder;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 
 /**
@@ -120,7 +120,7 @@ public class MysqlOrderDbAdapterImpl implements OrderDbAdapter {
   }
 
   @Override
-  public boolean insertOrder(Order order) {
+  public boolean insertOrder(FlightOrder order) {
     String sql = "INSERT INTO " + tableName + " VALUES ('" + order.getOrderId() + "', " + "'" + order.getUserId()
         + "', '" + order.getFlightId() + "', '" + order.getName() + "', '" + order.getScheduledDepartureTime() + "', '"
         + order.getScheduledArrivalTime() + "', '" + order.getFlightClass() + "', '" + order.getFlightPrice() + "', '"
@@ -161,15 +161,15 @@ public class MysqlOrderDbAdapterImpl implements OrderDbAdapter {
   }
 
   @Override
-  public Order[] queryOrders(String userId) {
+  public FlightOrder[] queryOrders(String userId) {
     String sql = "SELECT * FROM " + tableName + " WHERE userId='" + userId + "'";
     try {
       ResultSet re = stmt.executeQuery(sql);
-      List<?> reList = populate(re, Order.class);
+      List<?> reList = populate(re, FlightOrder.class);
       if (null == reList || reList.isEmpty()) {
-        return new Order[] {};
+        return new FlightOrder[] {};
       }
-      return (Order[]) reList.toArray(new Order[] {new Order()});
+      return (FlightOrder[]) reList.toArray(new FlightOrder[] {new FlightOrder()});
     } catch (SQLException e) {
       LOGGER.error("queryOrders  error: ", e);
     } catch (InstantiationException e) {
@@ -177,6 +177,6 @@ public class MysqlOrderDbAdapterImpl implements OrderDbAdapter {
     } catch (IllegalAccessException e) {
       LOGGER.error("queryOrders  error: ", e);
     }
-    return new Order[] {};
+    return new FlightOrder[] {};
   }
 }

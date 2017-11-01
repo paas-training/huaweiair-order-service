@@ -8,12 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.huaweiair.order.model.Order;
+import com.huaweiair.order.model.FlightOrder;
+
 
 public interface OrderDbAdapter {
-  boolean insertOrder(Order order);
+  boolean insertOrder(FlightOrder order);
 
-  Order[] queryOrders(String userId);
+  FlightOrder[] queryOrders(String userId);
 
   boolean updateOrder(String orderId, int action);
 

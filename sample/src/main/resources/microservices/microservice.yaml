@@ -1,0 +1,24 @@
+APPLICATION_ID: acmeair
+service_description:
+  name: OrderService
+  version: 0.0.1
+cse:
+  service:
+    registry:
+      address: https://127.0.0.1:9980
+  config:
+    client:
+      serverUri: https://127.0.0.1:30103
+      refreshMode: 0
+      refresh_interval: 5000
+  monitor:
+    client:
+      serverUri: https://127.0.0.1:30109
+  grpc:
+    address: 0.0.0.0:9090
+  rest:
+    address: 0.0.0.0:8080
+  handler:
+    chain:
+      Provider:
+        default: bizkeeper-provider,perf-stats,tracing-provider,sla-provider
