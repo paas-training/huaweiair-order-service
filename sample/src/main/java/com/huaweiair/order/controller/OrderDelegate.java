@@ -23,15 +23,15 @@ public class OrderDelegate{
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderDelegate.class);
 	
 	public OrderDelegate() {
-		String profile = System.getProperty("spring.profiles.active");
-		if ("jpa".equals(profile)) {
+	    String ip = System.getenv("MYSQL_DB_IP");
+	    String port = System.getenv("MYSQL_DB_PORT");
+
+		if (null == ip || null == port) {
 			dbAdapter = new MemOrderDBAdapterImpl();
 		} else {
-		    String ip = System.getenv("MYSQL_DB_IP");
-		    String port = System.getenv("MYSQL_DB_PORT");
 		    LOGGER.info("mysql ip: {} port: {}",ip,port);
 		    dbAdapter =
-		        new MysqlOrderDbAdapterImpl(null != ip ? ip : "mysql", null != port ? Integer.parseInt(port) : 30006);			
+		        new MysqlOrderDbAdapterImpl(ip, Integer.valueOf(port));			
 		}
 	}
 	
