@@ -21,4 +21,4 @@ cse:
   handler:
     chain:
       Provider:
-        default: bizkeeper-provider,perf-stats,tracing-provider,sla-provider
+        default: bizkeeper-provider,perf-stats,tracing-provider,sla-provider, qps-flowcontrol-provider
