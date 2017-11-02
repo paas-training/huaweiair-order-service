@@ -5,15 +5,15 @@ service_description:
 cse:
   service:
     registry:
-      address: https://127.0.0.1:9980
+      address: https://100.125.1.34:30100
   config:
     client:
-      serverUri: https://127.0.0.1:30103
+      serverUri: https://100.125.1.34:30103
       refreshMode: 0
       refresh_interval: 5000
   monitor:
     client:
-      serverUri: https://127.0.0.1:30109
+      serverUri: https://100.125.1.34:30109
   grpc:
     address: 0.0.0.0:9090
   rest:
