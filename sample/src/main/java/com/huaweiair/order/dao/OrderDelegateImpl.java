@@ -19,15 +19,16 @@ public class OrderDelegateImpl{
 	private static final Logger LOGGER = LoggerFactory.getLogger(OrderDelegateImpl.class);
 	
 	public OrderDelegateImpl() {
-	    String ip = System.getenv("MYSQL_DB_IP");
-	    String port = System.getenv("MYSQL_DB_PORT");
+		String memoryDB = System.getenv("db");
 
-		if (null == ip || null == port) {
+		if ("memory".equalsIgnoreCase(memoryDB)) {
 			dbAdapter = new MemOrderDBAdapterImpl();
 		} else {
-		    LOGGER.info("mysql ip: {} port: {}",ip,port);
+		    String ip = System.getenv("MYSQL_DB_IP");
+		    String port = System.getenv("MYSQL_DB_PORT");
+			LOGGER.info("mysql ip: {} port: {}",ip,port);
 		    dbAdapter =
-		        new MysqlOrderDbAdapterImpl(ip, Integer.valueOf(port));			
+		    		new MysqlOrderDbAdapterImpl(null != ip ? ip : "mysql", null != port ? Integer.parseInt(port) : 30006);		
 		}
 	}
 	
