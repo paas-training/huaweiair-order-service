@@ -257,7 +257,7 @@ under the License.
 			<repository>
 				<id>cse-repo</id>
 				<name>cse-repo</name>
-				<url>http://49.4.2.165:32700/nexus/content/repositories/cse</url>
+				<url>http://117.78.31.114:32700/nexus/content/repositories/cse</url>
 			</repository>
 		</repositories>
 	</profile>
