@@ -18,7 +18,7 @@ public class TestOrder {
 
     @Before
     public void setup() throws Exception{
-    	System.setProperty("spring.profiles.active", "jpa");
+    	System.setProperty("db", "memory");
         Log4jUtils.init();
         BeanUtils.init();
         orderImpl = BeanUtils.getBean("orderImpl");

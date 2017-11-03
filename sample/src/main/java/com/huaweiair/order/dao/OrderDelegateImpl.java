@@ -20,6 +20,9 @@ public class OrderDelegateImpl{
 	
 	public OrderDelegateImpl() {
 		String memoryDB = System.getenv("db");
+		if (memoryDB == null) {
+			memoryDB = System.getProperty("db");
+		}
 
 		if ("memory".equalsIgnoreCase(memoryDB)) {
 			dbAdapter = new MemOrderDBAdapterImpl();
